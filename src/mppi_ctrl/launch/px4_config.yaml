@@ -1,0 +1,117 @@
+/**:
+  ros__parameters:
+    # Common configuration for PX4 autopilot
+    startup_px4_usb_quirk: false
+
+    # --- system plugins ---
+
+    # sys_status & sys_time connection options
+    conn:
+      heartbeat_rate: 1.0
+      timeout: 10.0
+      timesync_rate: 10.0
+      system_time_rate: 1.0
+
+    # sys_status
+    sys:
+      min_voltage: 10.0
+      disable_diag: false
+
+    # sys_time
+    time:
+      time_ref_source: "fcu"
+      timesync_mode: "MAVLINK"
+      timesync_avg_alpha: 0.6
+
+    # 3dr_radio
+    tdr_radio:
+      low_rssi: 40
+
+    # command
+    cmd:
+      use_comp_id_system_control: false
+
+    # global_position
+    global_position:
+      frame_id: "map"
+      child_frame_id: "base_link"
+      rot_covariance: 99999.0
+      gps_uere: 1.0
+      use_relative_alt: true
+      tf:
+        send: true
+        frame_id: "map"
+        global_frame_id: "earth"
+        child_frame_id: "base_link"
+
+    # imu_pub
+    imu:
+      frame_id: "base_link"
+      linear_acceleration_stdev: 0.0003
+      angular_velocity_stdev: 0.0003490659
+      orientation_stdev: 1.0
+      magnetic_stdev: 0.0
+
+    # local_position
+    local_position:
+      frame_id: "odom"
+      tf:
+        send: true
+        frame_id: "odom"
+        child_frame_id: "base_link"
+        send_fcu: false
+
+    # odometry
+    odometry:
+      fcu:
+        odom_parent_id_des: "odom"
+        odom_child_id_des: "base_link"
+      in:
+        frame_id: "odom"
+        child_frame_id: "base_link_frd"
+        frame_tf:
+          local_frame: "local_origin"
+          body_frame_orientation: "frd"
+
+    # safety_area
+    safety_area:
+      p1:
+        x: 1.0
+        y: 1.0
+        z: 1.0
+      p2:
+        x: -1.0
+        y: -1.0
+        z: -1.0
+
+    # setpoint_accel
+    setpoint_accel:
+      send_force: false
+
+    # setpoint_attitude
+    setpoint_attitude:
+      reverse_thrust: false
+      use_quaternion: false
+      tf:
+        listen: false
+        frame_id: "map"
+        child_frame_id: "target_attitude"
+
+    # setpoint_position
+    setpoint_position:
+      tf:
+        listen: false
+        frame_id: "map"
+        child_frame_id: "target_position"
+      mav_frame: "LOCAL_NED"
+
+    # setpoint_velocity
+    setpoint_velocity:
+      mav_frame: "LOCAL_NED"
+
+    # vfr_hud
+    # None
+
+    # waypoint
+    waypoint:
+      pull_after_gcs: true
